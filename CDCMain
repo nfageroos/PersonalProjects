@@ -1,0 +1,44 @@
+import org.json.JSONObject;
+
+import javax.net.ssl.HttpsURLConnection;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
+public class Main {
+
+
+    public static void main(String[] args) throws IOException, InterruptedException {
+
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://data.cdc.gov/api/v3/views/rqg5-mkef/query.json?pageNumber=1&pageSize=10&app_token=B2vNNp0uj1XjUzIm6dK40M8WX"))
+                .header("Accept", "application/json")
+                .POST(HttpRequest.BodyPublishers.noBody())
+                .build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println("Status code: " + response.statusCode());
+        System.out.println("Response body: " + response.body());
+
+        /*BufferedReader reader = new BufferedReader(
+                new InputStreamReader(connect.getInputStream())
+        );
+        StringBuilder response = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            response.append(line);
+        }
+        reader.close();
+
+        JSONObject object = new JSONObject(response.toString());
+
+        System.out.println(object);
+        */
+
+    }
+}
