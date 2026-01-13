@@ -41,7 +41,7 @@ public class CharTree {
 	}
 	
 	
-	
+// ITERATIVE CONSTUCTOR	
 	
 /**	public CharTree(String encodingString) {
 		
@@ -185,4 +185,5 @@ public class CharTree {
 	
 }
 	
+
 	
