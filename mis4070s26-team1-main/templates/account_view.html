@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1 class="h2 mt-4">Account Profile</h1>
+<hr>
+
+<div class="card p-4">
+
+  <h4>Your Information</h4>
+  <p><strong>Height:</strong> {{ profile.height }} inches</p>
+  <p><strong>Weight:</strong> {{ profile.weight }} lbs</p>
+  <p><strong>Age:</strong> {{ profile.age }}</p>
+  <p><strong>Activity Level:</strong> {{ profile.activity_level }}</p>
+
+  <hr>
+
+  <h4>Your Goals</h4>
+  <p><strong>Daily Calories:</strong> {{ goals.calories }}</p>
+  <p><strong>Protein:</strong> {{ goals.protein }} g</p>
+  <p><strong>Carbs:</strong> {{ goals.carbs }} g</p>
+  <p><strong>Fat:</strong> {{ goals.fat }} g</p>
+
+  <div class="mt-4 d-flex gap-3">
+    <a href="{{ url_for('edit_account') }}" class="btn btn-success">Edit Account</a>
+    <a href="{{ url_for('edit_goals') }}" class="btn btn-primary">Edit Goals</a>
+  </div>
+
+</div>
+
+{% endblock %}

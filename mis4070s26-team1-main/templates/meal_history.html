@@ -1,0 +1,32 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Meal</th>
+      <th>Calories</th>
+      <th>Protein</th>
+      <th>Carbs</th>
+      <th>Fat</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for meal in meals %}
+    <tr>
+      <td>{{ meal.name }}</td>
+      <td>{{ meal.calories }}</td>
+      <td>{{ meal.protein }}</td>
+      <td>{{ meal.carbs }}</td>
+      <td>{{ meal.fat }}</td>
+
+      <!-- EDIT BUTTON -->
+      <td>
+        <a href="{{ url_for('edit_meal', index=loop.index0) }}" class="btn btn-warning btn-sm">
+          Edit
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
