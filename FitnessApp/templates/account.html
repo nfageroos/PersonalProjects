@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container-fluid px-4">
+
+<h1 class="h2">Set Up Your Profile</h1>
+<hr>
+
+<form method="POST" class="card p-4">
+
+  <h4>Your Information</h4>
+
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input type="text" name="name" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Sex</label>
+    <select name="sex" class="form-select" required>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Age</label>
+    <input type="number" name="age" class="form-control" required>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Weight (lbs)</label>
+      <input type="number" name="weight_lb" class="form-control" required>
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <label class="form-label">Height (ft)</label>
+      <input type="number" name="height_ft" class="form-control" required>
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <label class="form-label">Height (in)</label>
+      <input type="number" name="height_in" class="form-control" required>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Activity Level</label>
+    <select name="activity_level" class="form-select" required>
+      {% for level in activity_options %}
+        <option value="{{ level }}">{{ level }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Goal</label>
+    <select name="goal" class="form-select" required>
+      {% for g in goal_options %}
+        <option value="{{ g }}">{{ g }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <button class="btn btn-success w-100 mt-3">Save Profile</button>
+
+</form>
+
+{% if nutrition %}
+<div class="card p-4 mt-4">
+  <h4>Your Results</h4>
+  <hr>
+  <p><strong>BMI:</strong> {{nutrition.bmi }} ({{ nutrition.bmi_category }})</p>
+  <p><strong>BMR:</strong> {{ nutrition.bmr }} calories/day at rest</p>
+  <p><strong>TDEE:</strong> {{ nutrition.tdee }} calories/day</p>
+  <p><strong>Recommended Calories:</strong> {{ nutrition.calorie_goal }} calories/day</p>
+  <p><strong>Protein:</strong> {{ nutrition.protein_g }}g</p>
+  <p><strong>Carbs:</strong> {{ nutrition.carb_g }}g</p>
+  <p><strong>Fats:</strong> {{ nutrition.fat_g }}g</p>
+</div>
+{% endif %}
+
+</div>
+{% endblock %}
+
+
+
+

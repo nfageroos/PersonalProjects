@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+
+    <div class="card shadow p-4" style="width: 420px;">
+
+        <h2 class="text-center mb-4">Create Account</h2>
+
+        <form action="{{ url_for('create_account') }}" method="POST">
+
+            <!-- Username -->
+            <div class="mb-3">
+                <label class="form-label fw-bold">Username</label>
+                <input type="text" name="username" class="form-control form-control-lg"
+                       placeholder="Enter a username" required>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+                <label class="form-label fw-bold">Password</label>
+                <input type="password" name="password" class="form-control form-control-lg"
+                       placeholder="Enter a password" required>
+            </div>
+
+            <!-- Sign Up Button -->
+            <button class="btn btn-success btn-lg w-100 mt-2">Sign Up</button>
+
+        </form>
+
+        <!-- Password Requirements -->
+        <p class="text-muted mt-3" style="font-size: 0.9rem;">
+            <strong>Security Tip:</strong> Password must be at least 8 characters and include one special character: ! # $ % ( )
+        </p>
+
+        <!-- Back to Login -->
+        <div class="text-center mt-3">
+            <a href="{{ url_for('welcome') }}" class="text-success fw-bold">
+                ← Back to Login
+            </a>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
+
+
